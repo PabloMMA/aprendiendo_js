@@ -26,12 +26,39 @@ varias linear, como porejmplo un bloque de código */
 // //las variables "const" se declaran solo de una manera, y se le da varlo al momento de declarla
 // const PI = 3.14;
 
-let numeroA = 38;
-let numeroB = 1;
+// let numeroA = 38;
+// let numeroB = 1;
 
-let edadProximoAnio = numeroA + numeroB;
+// let edadProximoAnio = numeroA + numeroB;
 
-let name1= "Pablo";
-let lastName=" Meza";
+// let name1= "Pablo";
+// let lastName=" Meza";
 
-let fullName = name1+lastName;
+// let fullName = name1+lastName;
+
+// let altura= 1.7;
+
+// for (let i = 0; i < 10; i++) {
+//     alert(i)
+// }
+
+// let ingresarNumero = parseInt(prompt("Ingresar Numero"));
+// for (let i = 1; i<= 10; i++) {
+//     // let resultado=ingresarNumero * i ;
+//     // alert (ingresarNumero + " x " + i +" = "+ resultado);
+//     if(i==5){
+//         break;
+//     }
+//     alert (i)
+// }
+
+// Condicional 
+let granCompra = parseInt(prompt('Cuantos items compro?'));
+
+if (granCompra >= 10) {
+    console.log('Item adicional de reglao');
+} else if (granCompra < 10 && granCompra >= 7) {
+    console.log('Aplicar 5% de credito en Voucher');
+} else {
+    console.log("Sin beneficios")
+} 
