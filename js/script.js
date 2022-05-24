@@ -42,7 +42,7 @@ varias linear, como porejmplo un bloque de código */
 //     alert(i)
 // }
 
-// let ingresarNumero = parseInt(prompt("Ingresar Numero"));
+// let buscarProducto = parseInt(prompt("Buscar Producto"));
 // for (let i = 1; i<= 10; i++) {
 //     // let resultado=ingresarNumero * i ;
 //     // alert (ingresarNumero + " x " + i +" = "+ resultado);
@@ -52,13 +52,31 @@ varias linear, como porejmplo un bloque de código */
 //     alert (i)
 // }
 
+
 // Condicional 
 let granCompra = parseInt(prompt('Cuantos items compro?'));
 
 if (granCompra >= 10) {
-    console.log('Item adicional de reglao');
+    alert('Item adicional de reglao');
 } else if (granCompra < 10 && granCompra >= 7) {
-    console.log('Aplicar 5% de credito en Voucher');
+    alert('Aplicar 5% de credito en Voucher');
 } else {
-    console.log("Sin beneficios")
+    alert("Sin beneficios")
 } 
+
+let descuento = "5%";
+let opcion = prompt('Elegí una opción: 1- De cuento es mi descuento?. \n2 - \n Presioná S para finalizar.')
+
+
+while (opcion != 's') {
+    switch (opcion) {
+        case '1':
+            alert('Tu descuento es del ' + descuento);
+            break;
+
+        default:
+            alert('esa no es una opción');
+            break;
+    }
+    opcion = prompt('Elegí una opción: 1- Descuento. \n2 - \n Presioná S para finalizar.');
+}
