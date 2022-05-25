@@ -54,29 +54,151 @@ varias linear, como porejmplo un bloque de código */
 
 
 // Condicional 
-let granCompra = parseInt(prompt('Cuantos items compro?'));
+// let granCompra = parseInt(prompt('Cuantos items compro?'));
 
-if (granCompra >= 10) {
-    alert('Item adicional de reglao');
-} else if (granCompra < 10 && granCompra >= 7) {
-    alert('Aplicar 5% de credito en Voucher');
-} else {
-    alert("Sin beneficios")
-} 
+// if (granCompra >= 10) {
+//     alert('Item adicional de reglao');
+// } else if (granCompra < 10 && granCompra >= 7) {
+//     alert('Aplicar 5% de credito en Voucher');
+// } else {
+//     alert("Sin beneficios")
+// } 
 
-let descuento = "5%";
-let opcion = prompt('Elegí una opción: 1- De cuento es mi descuento?. \n2 - \n Presioná S para finalizar.')
+// let descuento = "5%";
+// let opcion = prompt('Elegí una opción: 1- De cuento es mi descuento?. \n2 - \n Presioná S para finalizar.')
 
 
-while (opcion != 's') {
-    switch (opcion) {
-        case '1':
-            alert('Tu descuento es del ' + descuento);
+// while (opcion != 's') {
+//     switch (opcion) {
+//         case '1':
+//             alert('Tu descuento es del ' + descuento);
+//             break;
+
+//         default:
+//             alert('esa no es una opción');
+//             break;
+//     }
+//     opcion = prompt('Elegí una opción: 1- Descuento. \n2 - \n Presioná S para finalizar.');
+// }
+
+const Servicios = 
+[
+    {   
+        id:1,
+        servicio:'Revenue Management',
+        precio: 1000,
+        duracion: 1,
+    },
+    {
+        id:2,
+        servicio:'PMS',
+        precio: 2000,
+        duracion: 1,
+    },
+    {   
+        id:3,
+        servicio:'Channel Manager',
+        precio: 100,
+        duracion: 1,
+    },
+    {
+        id:4,
+        servicio:'Motor De Reservas',
+        precio: 400,
+        duracion: 1,
+    },
+    {
+        id:5,
+        servicio:'GDS',
+        precio: 200,
+        duracion: 1,
+    },
+];
+
+
+let menu = '';
+menu+='gracias por visitarnos, Arma tu Kit se servicios\n';
+menu+='1 - servicios\n';
+menu+='2 - adquiridos\n';
+menu+='3 - borrar selecion\n';
+menu+='0 - salir\n';
+
+const Carrito = [];
+
+const system = () =>
+{
+    while(true)
+    {
+        let value = parseInt(prompt(menu));
+        switch (value)
+        {   
+            case 0:
             break;
 
-        default:
-            alert('esa no es una opción');
+            case 1:
+            alert("servicio");
+            contratarServicio();
             break;
-    }
-    opcion = prompt('Elegí una opción: 1- Descuento. \n2 - \n Presioná S para finalizar.');
+
+            case 2:
+            serviciosContratados();
+            break;
+
+            case 3:
+            borrarSelecion();    
+            break;
+        
+            default:
+            alert("esa no es una opción, vuelve a intentarlo");
+            break;
+        }
+        if(value == 0)
+        {   
+            alert("enviar pedido");
+    
+            break;
+        }
+    } 
 }
+
+const contratarServicio = () =>
+{   
+    let list = '';
+    for (const servicio of Servicios)
+    {
+        list+= servicio.id + '-' + servicio.servicio + '\n';
+    }
+
+    let seleccion = parseInt(prompt(list));
+    Carrito.push(Servicios[seleccion - 1]);
+    alert("Servicio Selecionado");
+    console.log(Carrito);
+}
+
+const serviciosContratados = () =>
+{
+    let list = 'Tu Kit se compone así: \n';
+    let index = 1;
+    for (const item of Carrito)
+    {
+        list += index++ + '- ' + item.servicio + '\n';
+    }
+
+    alert(list);
+}
+
+const borrarSelecion = () =>
+{
+    let list = 'Tu Kit se compone así: \n';
+    let index = 1;
+    for (const item of Carrito)
+    {
+        list += index++ + '- ' + item.servicio + '\n';
+    }
+
+    let seleccion = parseInt(prompt(list));
+    Carrito.splice(seleccion - 1 , 1);
+    alert("servicio deseleccionado");
+}
+
+system();
