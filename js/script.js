@@ -81,124 +81,150 @@ varias linear, como porejmplo un bloque de código */
 //     opcion = prompt('Elegí una opción: 1- Descuento. \n2 - \n Presioná S para finalizar.');
 // }
 
-const Servicios = 
-[
-    {   
-        id:1,
-        servicio:'Revenue Management',
-        precio: 1000,
-        duracion: 1,
-    },
-    {
-        id:2,
-        servicio:'PMS',
-        precio: 2000,
-        duracion: 1,
-    },
-    {   
-        id:3,
-        servicio:'Channel Manager',
-        precio: 100,
-        duracion: 1,
-    },
-    {
-        id:4,
-        servicio:'Motor De Reservas',
-        precio: 400,
-        duracion: 1,
-    },
-    {
-        id:5,
-        servicio:'GDS',
-        precio: 200,
-        duracion: 1,
-    },
-];
+// const Servicios = 
+// [
+//     {   
+//         id:1,
+//         servicio:'Revenue Management',
+//         precio: 1000,
+//         duracion: 1,
+//     },
+//     {
+//         id:2,
+//         servicio:'PMS',
+//         precio: 2000,
+//         duracion: 1,
+//     },
+//     {   
+//         id:3,
+//         servicio:'Channel Manager',
+//         precio: 100,
+//         duracion: 1,
+//     },
+//     {
+//         id:4,
+//         servicio:'Motor De Reservas',
+//         precio: 400,
+//         duracion: 1,
+//     },
+//     {
+//         id:5,
+//         servicio:'GDS',
+//         precio: 200,
+//         duracion: 1,
+//     },
+// ];
 
 
-let menu = '';
-menu+='gracias por visitarnos, Arma tu Kit se servicios\n';
-menu+='1 - servicios\n';
-menu+='2 - adquiridos\n';
-menu+='3 - borrar selecion\n';
-menu+='0 - salir\n';
+// let menu = '';
+// menu+='gracias por visitarnos, Arma tu Kit se servicios\n';
+// menu+='1 - servicios\n';
+// menu+='2 - adquiridos\n';
+// menu+='3 - borrar selecion\n';
+// menu+='0 - salir\n';
 
-const Carrito = [];
+// const Carrito = [];
 
-const system = () =>
-{
-    while(true)
-    {
-        let value = parseInt(prompt(menu));
-        switch (value)
-        {   
-            case 0:
-            break;
+// const system = () =>
+// {
+//     while(true)
+//     {
+//         let value = parseInt(prompt(menu));
+//         switch (value)
+//         {   
+//             case 0:
+//             break;
 
-            case 1:
-            alert("servicio");
-            contratarServicio();
-            break;
+//             case 1:
+//             alert("servicio");
+//             contratarServicio();
+//             break;
 
-            case 2:
-            serviciosContratados();
-            break;
+//             case 2:
+//             serviciosContratados();
+//             break;
 
-            case 3:
-            borrarSelecion();    
-            break;
+//             case 3:
+//             borrarSelecion();    
+//             break;
         
-            default:
-            alert("esa no es una opción, vuelve a intentarlo");
-            break;
-        }
-        if(value == 0)
-        {   
-            alert("enviar pedido");
+//             default:
+//             alert("esa no es una opción, vuelve a intentarlo");
+//             break;
+//         }
+//         if(value == 0)
+//         {   
+//             alert("enviar pedido");
     
-            break;
-        }
-    } 
+//             break;
+//         }
+//     } 
+// }
+
+// const contratarServicio = () =>
+// {   
+//     let list = '';
+//     for (const servicio of Servicios)
+//     {
+//         list+= servicio.id + '-' + servicio.servicio + '\n';
+//     }
+
+//     let seleccion = parseInt(prompt(list));
+//     Carrito.push(Servicios[seleccion - 1]);
+//     alert("Servicio Selecionado");
+//     console.log(Carrito);
+// }
+
+// const serviciosContratados = () =>
+// {
+//     let list = 'Tu Kit se compone así: \n';
+//     let index = 1;
+//     for (const item of Carrito)
+//     {
+//         list += index++ + '- ' + item.servicio + '\n';
+//     }
+
+//     alert(list);
+// }
+
+// const borrarSelecion = () =>
+// {
+//     let list = 'Tu Kit se compone así: \n';
+//     let index = 1;
+//     for (const item of Carrito)
+//     {
+//         list += index++ + '- ' + item.servicio + '\n';
+//     }
+
+//     let seleccion = parseInt(prompt(list));
+//     Carrito.splice(seleccion - 1 , 1);
+//     alert("servicio deseleccionado");
+// }
+
+// system();
+
+function cambiarPrecio(source){
+    document.getElementById('fullHouseServicios').src =source;
 }
 
-const contratarServicio = () =>
-{   
-    let list = '';
-    for (const servicio of Servicios)
-    {
-        list+= servicio.id + '-' + servicio.servicio + '\n';
-    }
+const servicios = [{
+    id: 1,
+    nombre: 'Revenue Management',
+    contrato: 'anual',
+    imagen: './img/anual.tif'
+}, {
+    id: 2,
+    nombre: 'Revenue Management',
+    contrato: 'trimestral',
+    imagen: './img/trimestral.tif'
+}]
 
-    let seleccion = parseInt(prompt(list));
-    Carrito.push(Servicios[seleccion - 1]);
-    alert("Servicio Selecionado");
-    console.log(Carrito);
+let elementosradio = document.querySelectorAll('.radiobutton');
+
+for (const elemento of elementosradio) {
+    elemento.addEventListener('click',()=>{
+        let contratoElegido = elemento.value;
+        let precioElegido =servicios.find((servicio)=>servicio.contrato ==contratoElegido);
+        cambiarPrecio(precioElegido.contrato);
+    })
 }
-
-const serviciosContratados = () =>
-{
-    let list = 'Tu Kit se compone así: \n';
-    let index = 1;
-    for (const item of Carrito)
-    {
-        list += index++ + '- ' + item.servicio + '\n';
-    }
-
-    alert(list);
-}
-
-const borrarSelecion = () =>
-{
-    let list = 'Tu Kit se compone así: \n';
-    let index = 1;
-    for (const item of Carrito)
-    {
-        list += index++ + '- ' + item.servicio + '\n';
-    }
-
-    let seleccion = parseInt(prompt(list));
-    Carrito.splice(seleccion - 1 , 1);
-    alert("servicio deseleccionado");
-}
-
-system();
