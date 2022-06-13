@@ -202,29 +202,31 @@ varias linear, como porejmplo un bloque de código */
 // }
 
 // system();
+let radioBeige = document.getElementById("anual");
+let radioNegro = document.getElementById("trimestral");
 
 function cambiarPrecio(source){
-    document.getElementById('fullHouseServicios').src =source;
+    document.getElementById("fullHouseServicios").src =source;
 }
 
 const servicios = [{
     id: 1,
-    nombre: 'Revenue Management',
-    contrato: 'anual',
-    imagen: './img/anual.tif'
+    nombre: "Revenue Management",
+    contrato: "anual",
+    imagen: "./img/anual.jpg"
 }, {
     id: 2,
-    nombre: 'Revenue Management',
-    contrato: 'trimestral',
-    imagen: './img/trimestral.tif'
+    nombre: "Revenue Management",
+    contrato: "trimestral",
+    imagen: "./img/trimestral.png"
 }]
 
-let elementosradio = document.querySelectorAll('.radiobutton');
+let elementosradio = document.querySelectorAll(".radiobutton");
 
 for (const elemento of elementosradio) {
-    elemento.addEventListener('click',()=>{
+    elemento.addEventListener("click",()=>{
         let contratoElegido = elemento.value;
         let precioElegido =servicios.find((servicio)=>servicio.contrato ==contratoElegido);
-        cambiarPrecio(precioElegido.contrato);
+        cambiarPrecio(precioElegido.imagen);
     })
 }
